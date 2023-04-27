@@ -54,18 +54,20 @@ def checkAppointments():
 
         server.quit()
 
+def performOperations(blsOffice):
+    locationDropdown.select_by_visible_text(blsOffice)
+    serviceTypeDropdown.select_by_visible_text("Passport")
+    time.sleep(5)
+    appDateTextField.click()
+    checkAppointments()
 
-# Perform Operations
-locationDropdown.select_by_visible_text("Brampton")
-serviceTypeDropdown.select_by_visible_text("Passport")
-time.sleep(5)
-appDateTextField.click()
-checkAppointments()
+    #Check appointments in the next month
+    nextButtonXpath = "//html/body/div[5]/div[1]/table/thead/tr[1]/th[3]"
+    nextButton = browser.find_element(By.XPATH, nextButtonXpath)
+    nextButton.click()
+    checkAppointments()
 
-locationDropdown.select_by_visible_text("Toronto")
-serviceTypeDropdown.select_by_visible_text("Passport")
-time.sleep(5)
-appDateTextField.click()
-checkAppointments()
+performOperations("Brampton")
+performOperations("Toronto")
 
 browser.quit()
