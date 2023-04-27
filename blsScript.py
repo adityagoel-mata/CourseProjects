@@ -3,6 +3,18 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options 
 import time
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+# Define email content
+email = MIMEMultipart()
+email['From'] = 'boundlesscuriosity237@gmail.com'
+email['To'] = 'adityagoel237@gmail.com'
+email['Subject'] = 'Test Email'
+body = 'This is a test email sent from Python'
+email.attach(MIMEText(body, 'plain'))
+
 
 #configs for running headless
 chrome_options = Options()
@@ -37,6 +49,16 @@ for i in range(1,7):
 
     if (dateClass.get_attribute("class") == "new day activeClass"):
       print("FUCK YEAH")
+      # Send email
+      server = smtplib.SMTP('smtp.gmail.com', 587)
+      server.starttls()
+      server.login('boundlesscuriosity237@gmail.com', 'yuiiulcvxxnnzblb')
+
+      # server = smtplib.SMTP('localhost')
+      text = email.as_string()
+      server.sendmail('boundlesscuriosity237@gmail.com', 'adityagoel237@gmail.com', text)
+
+      server.quit()
 
 # while(True):
 #   pass
