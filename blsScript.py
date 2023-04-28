@@ -45,10 +45,8 @@ def performOperations(blsOffice):
 
 # Function to check availability of appointments:
 def checkAppointments():
-
   for i in range(1,7):        #Six rows for six weeks (Week[-1] + Week[1-4] + Week[+1]) is displayed
-    for j in range(1,8):      # Seven days pwer week
-      
+    for j in range(1,8):      # Seven days pwer week    
       dateXPath = "//html/body/div[5]/div[1]/table/tbody/tr[" + str(i) + "]" + "/td[" + str(j) +"]"
       dateClass = browser.find_element(By.XPATH, dateXPath)
       print(dateClass.get_attribute("class"))
