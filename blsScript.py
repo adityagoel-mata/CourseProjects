@@ -60,7 +60,7 @@ def checkAppointments():
 def notifyMe():
     # Define email content
     email = MIMEMultipart()
-    email['From'] = 'boundlesscuriosity237@gmail.com'
+    email['From'] = 'goela19@mcmaster.ca'
     email['To'] = 'adityagoel237@gmail.com'
     email['Subject'] = 'Test Email'
     body = 'There is an appointment available'
@@ -69,9 +69,9 @@ def notifyMe():
     # Send email
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
-    server.login('boundlesscuriosity237@gmail.com', 'yuiiulcvxxnnzblb')
+    server.login('goela19@mcmaster.ca', '<password>')
     text = email.as_string()
-    server.sendmail('boundlesscuriosity237@gmail.com', 'adityagoel237@gmail.com', text)
+    server.sendmail('goela19@mcmaster.ca', 'adityagoel237@gmail.com', text)
 
     server.quit()
 
