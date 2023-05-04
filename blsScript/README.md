@@ -1,8 +1,12 @@
+# **How I coded my way to the next available appointment.**
+_**Disclaimer** : This is simply an alert mechanism that uses publicly available unencrypted data. Appointments are still to be booked manually._
 ## **Context**
 For an Indian citizen living in the Greater Toronto Area (GTA), many of the services involving our passports, such as the passport renewal service, are provided at the BLS centres in Brampton or Toronto. However, getting an appointment at those centres is _next to impossible_. 
+<br/><br/>
 
 ![Image1](./01_BookedAppointment.png "Image 1: No available appointments for the month.")
 ***Image 1**: No available appointments for the month.*
+<br/><br/>
 
 All the available slots are booked for the next two months and no new slots are issued for months following them. One of the ways to get the service is via walk-in appointments. To get those, one has to reach the centre early in the morning at 5 am, stand in the queue and wait. The centres open up at 8 am and their turn may come up by 11 am or later.
 
@@ -48,7 +52,7 @@ if __name__ == '__main__':
     
     #script to be continued below.
 ```
-
+<br/><br/>
 Once the location and service type dropdowns are selected, we click on the **Date** option. A calendar pops up highlighting the unavailable and available dates. Here, I wrote a function, _**check_Appointments()**_, that traversed through all the dates of the current month followed by the next month. Incase any slot on any date was available, the function would return True and I would get notified about it by the function _**notify_Me()**_. The Python script for traversing the calendar is as follows:
 
 ```Python
@@ -91,7 +95,7 @@ if __name__ == '__main__':
     
   browser.quit()
 ```
-
+<br/><br/>
 The _**check_Appointments()**_ function's script is below. Here, I traversed the dates using their [XPaths](https://medium.com/r/?url=https%3A%2F%2Fwww.lambdatest.com%2Fblog%2Fcomplete-guide-for-using-xpath-in-selenium-with-examples%2F) and checked their availability using their Class names - both of which can be found using the _inspect element_ option in Google Chrome.
 
 ```Python
@@ -114,7 +118,7 @@ def check_Appointments() -> bool:
           return True
   return False
 ```
-
+<br/><br/>
 Finally, I wrote the _**notify_Me()**_ function, which emailed me whenever a slot was available. The email would ping my phone up and I would instantly know about it. The Python function for it is below.
 
 ```Python
@@ -144,14 +148,14 @@ def notifyMe():
   server.sendmail(EMAIL_FROM, EMAIL_TO, text)
   server.quit()
 ```
-
+<br/><br/>
 **Note:** Here, the APP_PASSWORD is not your Gmail account's password. One can set up their account's App-Password using the following [Link](https://help.warmupinbox.com/en/articles/4934806-configure-for-google-workplace-with-two-factor-authentication-2fa).
 Now, to run this script periodically throughout the day, I set up a cronjob that triggered it after every five minutes. The cronjob is as follows:
 
 ```Bash
 */5 * * * * /usr/bin/python3 /home/ubuntu/blsScript.py
 ```
-
+<br/><br/>
 Since running the script every five minutes on my laptop was not a feasible solution, I decided to use the **AWS EC2** instance which is free of cost and will run all the time to carry out my job. To run the script in an ubuntu-Ec2 instance, I configured a **headless browser** inside the script. The configurations are written below.
 
 **Note:** Here, the first line of the main function gets slightly modified.
@@ -179,7 +183,7 @@ if __name__ == '__main__':
 
   #Remaining script is the same.
 ```
-
+<br/><br/>
 Voila! Although it took me five working days to get the next appointment, I could avoid waking up early and standing in the queue in the chilly Canadian winters.
 
 ## **Inspiration Credits:**
