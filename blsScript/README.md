@@ -1,4 +1,4 @@
-# **How I coded my way to the next available appointment.**
+# **How I devopsed my way to the next available appointment.**
 _**Disclaimer** : This is simply an alert mechanism that uses publicly available unencrypted data. Appointments are still to be booked manually._
 ## **Context**
 For an Indian citizen living in the Greater Toronto Area (GTA), many of the services involving our passports, such as the passport renewal service, are provided at the BLS centres in Brampton or Toronto. However, getting an appointment at those centres is _next to impossible_. 
