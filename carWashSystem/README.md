@@ -1,9 +1,4 @@
-# SEP769CPSProject
-Course Project for Cyber-Physical Systems
-
-Group 12:
-Sulaiman Mohiuddin, Mohsin Mian Mohammad, Aditya Goel
-
+# Automated Car Wash System
 Main File: automatedCarWash.py
 
 Abstract:
